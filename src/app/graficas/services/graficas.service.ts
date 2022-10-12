@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { delay, map } from 'rxjs/operators';
 import { __values } from 'tslib';
 
@@ -12,7 +12,9 @@ export class GraficasService {
 
   getUserSocial() {
     // return this.http.get('http://localhost:3000/grafica');
-    return this.http.get('https://my-json-server.typicode.com/Jhonatanzr/graficas-server/main/db.json/grafica');
+    let header = new HttpHeaders().set('Access-Control-Allow-Origin','*')
+      .set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    return this.http.get('https://my-json-server.typicode.com/Jhonatanzr/graficas-server/main/db.json/grafica',{headers:header});
   }
 
   getUserSocialDona() {
